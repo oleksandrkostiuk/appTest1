@@ -148,7 +148,8 @@
     "flow": "page-metadata-and-hero",
     "priority": "Medium",
     "tags": [
-      "negative"
+      "negative",
+      "smoke"
     ],
     "preconditions": [
       "Anonymous user (not logged in)",

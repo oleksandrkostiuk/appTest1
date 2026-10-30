@@ -132,7 +132,7 @@ Type: UI
 Feature: about
 Flow: page-metadata-and-hero
 Priority: Medium
-Tags: negative
+Tags: negative, smoke
 Preconditions:
   - Anonymous user (not logged in)
   - Desktop viewport 1536x864
