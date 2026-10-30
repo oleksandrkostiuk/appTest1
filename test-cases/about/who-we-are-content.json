@@ -1,0 +1,96 @@
+[
+  {
+    "id": "TC-ABOUT-WHOWE-001",
+    "title": "\"Who We Are\" section heading is visible",
+    "type": "UI",
+    "feature": "about",
+    "flow": "who-we-are-content",
+    "priority": "Medium",
+    "tags": [
+      "smoke"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Expected heading (h2): Who We Are",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Scroll to the section below the hero"
+    ],
+    "expected_result": "An h2 \"Who We Are\" is visible and sits directly below the hero.",
+    "linked_requirement": "None"
+  },
+  {
+    "id": "TC-ABOUT-WHOWE-002",
+    "title": "Intro copy contains the key company facts",
+    "type": "UI",
+    "feature": "about",
+    "flow": "who-we-are-content",
+    "priority": "Medium",
+    "tags": [
+      "smoke"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Key phrases: Charlie Rizzo, 1983, Chicago, 40 years",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Read the text of the three paragraphs in the \"Who We Are\" section"
+    ],
+    "expected_result": "The section has 3 paragraphs, in order, and together they mention founder Charlie Rizzo, the year 1983, Chicago and 40+ years. Full wording is not asserted.",
+    "linked_requirement": "None"
+  },
+  {
+    "id": "TC-ABOUT-WHOWE-003",
+    "title": "Section image loads",
+    "type": "UI",
+    "feature": "about",
+    "flow": "who-we-are-content",
+    "priority": "Medium",
+    "tags": [
+      "negative"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Image: the picture next to the \"Who We Are\" copy",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Scroll to the \"Who We Are\" section",
+      "Check the section image (naturalWidth > 0, complete = true)"
+    ],
+    "expected_result": "The image is displayed with real dimensions; no broken-image icon.",
+    "linked_requirement": "None"
+  },
+  {
+    "id": "TC-ABOUT-WHOWE-004",
+    "title": "History link is present and resolves",
+    "type": "UI",
+    "feature": "about",
+    "flow": "who-we-are-content",
+    "priority": "Medium",
+    "tags": [
+      "smoke"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Link text: History (currently https://skyline.glass/history/ — production domain)",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Find the \"History\" link in the \"Who We Are\" text",
+      "Click it (or request its href)"
+    ],
+    "expected_result": "The link is present and its target responds with a success status (not 404/500) and shows a page. The domain (dev vs production) is not asserted; a dev-to-prod link is reported as a note.",
+    "linked_requirement": "None"
+  }
+]
