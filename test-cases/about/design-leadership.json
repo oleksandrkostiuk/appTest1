@@ -1,0 +1,123 @@
+[
+  {
+    "id": "TC-ABOUT-LEAD-001",
+    "title": "\"Design Leadership\" heading is visible after scrolling",
+    "type": "UI",
+    "feature": "about",
+    "flow": "design-leadership",
+    "priority": "Medium",
+    "tags": [
+      "smoke"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Expected heading (h2): Design Leadership",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Scroll slowly from top to bottom so every section is revealed (some sections are hidden until scrolled into view)"
+    ],
+    "expected_result": "An h2 \"Design Leadership\" is visible when the section is scrolled into view.",
+    "linked_requirement": "None"
+  },
+  {
+    "id": "TC-ABOUT-LEAD-002",
+    "title": "Section content is hidden until scrolled into view and then revealed",
+    "type": "UI",
+    "feature": "about",
+    "flow": "design-leadership",
+    "priority": "Medium",
+    "tags": [
+      "boundary"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Initial state: visibility hidden; after scroll: visible",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Without scrolling, inspect the Design Leadership content (visibility / opacity)",
+      "Scroll the section into the viewport",
+      "Inspect the content again"
+    ],
+    "expected_result": "Before scroll the content is not visible; after scrolling the section into view the heading and portraits become visible and remain visible when scrolling away and back.",
+    "linked_requirement": "None"
+  },
+  {
+    "id": "TC-ABOUT-LEAD-003",
+    "title": "Five portraits are displayed and load",
+    "type": "UI",
+    "feature": "about",
+    "flow": "design-leadership",
+    "priority": "High",
+    "tags": [
+      "smoke"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Expected portraits: 5",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Scroll slowly from top to bottom so every section is revealed (some sections are hidden until scrolled into view)",
+      "Count the portrait images in the Design Leadership carousel",
+      "Check each image loaded (naturalWidth > 0)"
+    ],
+    "expected_result": "Exactly 5 portraits are present and each renders as an image (no broken-image icon).",
+    "linked_requirement": "None"
+  },
+  {
+    "id": "TC-ABOUT-LEAD-004",
+    "title": "Carousel can be moved horizontally to show all portraits",
+    "type": "UI",
+    "feature": "about",
+    "flow": "design-leadership",
+    "priority": "Medium",
+    "tags": [
+      "boundary"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Carousel: horizontal, 5 items",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Scroll slowly from top to bottom so every section is revealed (some sections are hidden until scrolled into view)",
+      "Scroll or drag the carousel horizontally to the last item, then back to the first"
+    ],
+    "expected_result": "All 5 portraits can be reached and viewed; the carousel does not get stuck and does not cause page-level horizontal scroll.",
+    "linked_requirement": "None"
+  },
+  {
+    "id": "TC-ABOUT-LEAD-005",
+    "title": "[a11y] Portraits have non-empty alt text",
+    "type": "UI",
+    "feature": "about",
+    "flow": "design-leadership",
+    "priority": "Medium",
+    "tags": [
+      "negative"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Expected: alt attribute non-empty on all 5 portrait images (currently alt=\"\" on all 5)",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Scroll slowly from top to bottom so every section is revealed (some sections are hidden until scrolled into view)",
+      "Read the alt attribute of each portrait image"
+    ],
+    "expected_result": "Every portrait has a non-empty, meaningful alt text (for example the person's name). Intended names/titles are an open question, so only non-empty alt is asserted.",
+    "linked_requirement": "None"
+  }
+]

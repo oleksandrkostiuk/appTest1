@@ -1,0 +1,195 @@
+[
+  {
+    "id": "TC-ABOUT-RESP-001",
+    "title": "No horizontal overflow on desktop (1536px)",
+    "type": "UI",
+    "feature": "about",
+    "flow": "responsive-layout",
+    "priority": "High",
+    "tags": [
+      "smoke"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Viewport: 1536x864",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Scroll slowly from top to bottom so every section is revealed (some sections are hidden until scrolled into view)",
+      "Compare document.documentElement.scrollWidth with the viewport width"
+    ],
+    "expected_result": "scrollWidth does not exceed the viewport width; there is no horizontal scrollbar and no section is cut off.",
+    "linked_requirement": "None"
+  },
+  {
+    "id": "TC-ABOUT-RESP-002",
+    "title": "No horizontal overflow on tablet (768px)",
+    "type": "UI",
+    "feature": "about",
+    "flow": "responsive-layout",
+    "priority": "High",
+    "tags": [
+      "smoke"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Tablet viewport 768x1024",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Viewport: 768x1024",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Scroll slowly from top to bottom so every section is revealed (some sections are hidden until scrolled into view)",
+      "Compare document.documentElement.scrollWidth with the viewport width"
+    ],
+    "expected_result": "scrollWidth does not exceed the viewport width; there is no horizontal scrollbar and no section is cut off.",
+    "linked_requirement": "None"
+  },
+  {
+    "id": "TC-ABOUT-RESP-003",
+    "title": "No horizontal overflow on mobile (375px)",
+    "type": "UI",
+    "feature": "about",
+    "flow": "responsive-layout",
+    "priority": "High",
+    "tags": [
+      "smoke"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Mobile viewport 375x812",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Viewport: 375x812",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Scroll slowly from top to bottom so every section is revealed (some sections are hidden until scrolled into view)",
+      "Compare document.documentElement.scrollWidth with the viewport width"
+    ],
+    "expected_result": "scrollWidth does not exceed the viewport width; there is no horizontal scrollbar and no section is cut off.",
+    "linked_requirement": "None"
+  },
+  {
+    "id": "TC-ABOUT-RESP-004",
+    "title": "No horizontal overflow at the smallest common width (320px)",
+    "type": "UI",
+    "feature": "about",
+    "flow": "responsive-layout",
+    "priority": "Medium",
+    "tags": [
+      "boundary"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Mobile viewport 320x568",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Viewport: 320x568",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Scroll slowly from top to bottom so every section is revealed (some sections are hidden until scrolled into view)",
+      "Compare document.documentElement.scrollWidth with the viewport width"
+    ],
+    "expected_result": "scrollWidth does not exceed the viewport width; texts wrap and no content is cut off.",
+    "linked_requirement": "None"
+  },
+  {
+    "id": "TC-ABOUT-RESP-005",
+    "title": "Section order is the same on desktop, tablet and mobile",
+    "type": "UI",
+    "feature": "about",
+    "flow": "responsive-layout",
+    "priority": "Medium",
+    "tags": [
+      "smoke"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Mobile viewport 375x812",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Expected order: hero, Who We Are, Design Leadership, What We Make, What Sets Us Apart?, Environmental Values, CTA, footer",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Scroll slowly from top to bottom so every section is revealed (some sections are hidden until scrolled into view)",
+      "Note the order of the sections",
+      "Repeat at 768x1024 and 1536x864"
+    ],
+    "expected_result": "Sections appear in the listed order at all three viewport widths; none is missing or duplicated.",
+    "linked_requirement": "None"
+  },
+  {
+    "id": "TC-ABOUT-RESP-006",
+    "title": "Images are not broken at mobile width",
+    "type": "UI",
+    "feature": "about",
+    "flow": "responsive-layout",
+    "priority": "Medium",
+    "tags": [
+      "negative"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Mobile viewport 375x812",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Viewport: 375x812",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Scroll slowly from top to bottom so every section is revealed (some sections are hidden until scrolled into view)",
+      "Check every img element on the page (complete = true, naturalWidth > 0), including lazy-loaded ones"
+    ],
+    "expected_result": "All visible images load; none overflows its container or is distorted beyond its aspect ratio.",
+    "linked_requirement": "None"
+  },
+  {
+    "id": "TC-ABOUT-RESP-007",
+    "title": "Hero text is readable and not clipped on mobile",
+    "type": "UI",
+    "feature": "about",
+    "flow": "responsive-layout",
+    "priority": "Medium",
+    "tags": [
+      "smoke"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Mobile viewport 375x812",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Hero text: Over 40 years of Chicago-made glass.",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Look at the hero block"
+    ],
+    "expected_result": "The full hero text is visible, wrapped inside the viewport and not hidden behind the header.",
+    "linked_requirement": "None"
+  },
+  {
+    "id": "TC-ABOUT-RESP-008",
+    "title": "Layout switches when the window is resized from desktop to mobile",
+    "type": "UI",
+    "feature": "about",
+    "flow": "responsive-layout",
+    "priority": "Medium",
+    "tags": [
+      "boundary"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Resize: 1536x864 -> 375x812 without reloading",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Confirm the desktop nav links are visible",
+      "Resize the window to 375x812 without reloading",
+      "Look at the header and the page layout"
+    ],
+    "expected_result": "The header switches to the mobile layout (search icon and hamburger instead of the nav links) and content reflows without horizontal overflow.",
+    "linked_requirement": "None"
+  }
+]

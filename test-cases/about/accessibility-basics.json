@@ -1,0 +1,192 @@
+[
+  {
+    "id": "TC-ABOUT-A11Y-001",
+    "title": "[a11y] Heading hierarchy has one h1 and no skipped levels",
+    "type": "UI",
+    "feature": "about",
+    "flow": "accessibility-basics",
+    "priority": "Medium",
+    "tags": [
+      "negative"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Expected: 1 h1, then h2 sections, then h3 subsections",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "List all headings (h1-h6) in DOM order with their levels"
+    ],
+    "expected_result": "There is exactly one h1, section headings are h2 and sub-headings are h3; no heading level is skipped.",
+    "linked_requirement": "None"
+  },
+  {
+    "id": "TC-ABOUT-A11Y-002",
+    "title": "[a11y] No heading is empty",
+    "type": "UI",
+    "feature": "about",
+    "flow": "accessibility-basics",
+    "priority": "Medium",
+    "tags": [
+      "negative"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Known empty headings: h1 (page), h3 under \"Who We Are\"",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "List all headings and read their text content"
+    ],
+    "expected_result": "Every heading element has non-empty text (currently the h1 and one h3 under \"Who We Are\" are empty).",
+    "linked_requirement": "None"
+  },
+  {
+    "id": "TC-ABOUT-A11Y-003",
+    "title": "[a11y] Content images have non-empty alt text",
+    "type": "UI",
+    "feature": "about",
+    "flow": "accessibility-basics",
+    "priority": "Medium",
+    "tags": [
+      "negative"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Images: Who We Are image, 5 portraits, 2 card images, Environmental Values image",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Scroll slowly from top to bottom so every section is revealed (some sections are hidden until scrolled into view)",
+      "Read the alt attribute of each content image"
+    ],
+    "expected_result": "Every content image has a non-empty, descriptive alt. Purely decorative images may use alt=\"\" but the 5 portraits are content images.",
+    "linked_requirement": "None"
+  },
+  {
+    "id": "TC-ABOUT-A11Y-004",
+    "title": "[a11y] Social links have an accessible name with the network",
+    "type": "UI",
+    "feature": "about",
+    "flow": "accessibility-basics",
+    "priority": "Medium",
+    "tags": [
+      "negative"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Links: Instagram, LinkedIn, Facebook, YouTube (currently all named \"social profile - opens in a new tab\")",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Scroll to the footer",
+      "Read the accessible name of each social link (aria-label or image alt)"
+    ],
+    "expected_result": "Each social link has a distinct accessible name that includes the network name, for example \"Instagram - opens in a new tab\".",
+    "linked_requirement": "None"
+  },
+  {
+    "id": "TC-ABOUT-A11Y-005",
+    "title": "[a11y] All links have a non-empty accessible name",
+    "type": "UI",
+    "feature": "about",
+    "flow": "accessibility-basics",
+    "priority": "Medium",
+    "tags": [
+      "negative"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Scope: all a elements on /about/",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Collect every a element and compute its accessible name (text, aria-label, or image alt)"
+    ],
+    "expected_result": "No link has an empty accessible name (including the logo link and the social links).",
+    "linked_requirement": "None"
+  },
+  {
+    "id": "TC-ABOUT-A11Y-006",
+    "title": "[a11y] Hamburger can be focused and operated with the keyboard",
+    "type": "UI",
+    "feature": "about",
+    "flow": "accessibility-basics",
+    "priority": "High",
+    "tags": [
+      "negative"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Mobile viewport 375x812",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Keys: Tab, Enter, Space",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Press Tab until the hamburger receives focus",
+      "Press Enter",
+      "Close it, then repeat with Space"
+    ],
+    "expected_result": "The hamburger is reachable with Tab, shows a visible focus indicator, and opens/closes the menu with Enter and Space (currently it is a <span> without tabindex or role).",
+    "linked_requirement": "None"
+  },
+  {
+    "id": "TC-ABOUT-A11Y-007",
+    "title": "[a11y] Hamburger exposes role, label and expanded state",
+    "type": "UI",
+    "feature": "about",
+    "flow": "accessibility-basics",
+    "priority": "Medium",
+    "tags": [
+      "negative"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Mobile viewport 375x812",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Control: #menu-burger-opener",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Inspect #menu-burger-opener attributes",
+      "Open the menu and inspect again"
+    ],
+    "expected_result": "The control has an appropriate role (button), an accessible name (aria-label) and aria-expanded that changes between false and true.",
+    "linked_requirement": "None"
+  },
+  {
+    "id": "TC-ABOUT-A11Y-008",
+    "title": "[a11y] Header navigation follows a logical tab order with visible focus",
+    "type": "UI",
+    "feature": "about",
+    "flow": "accessibility-basics",
+    "priority": "Low",
+    "tags": [
+      "negative"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Keys: Tab / Shift+Tab",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Press Tab repeatedly from the top of the page through the header",
+      "Observe focus position and indicator at each stop"
+    ],
+    "expected_result": "Focus moves through the logo and nav links left to right, a focus indicator is always visible, and there is no keyboard trap.",
+    "linked_requirement": "None"
+  }
+]

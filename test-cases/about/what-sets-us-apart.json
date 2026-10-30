@@ -1,0 +1,98 @@
+[
+  {
+    "id": "TC-ABOUT-APART-001",
+    "title": "Heading and exactly two cards are displayed",
+    "type": "UI",
+    "feature": "about",
+    "flow": "what-sets-us-apart",
+    "priority": "Medium",
+    "tags": [
+      "smoke"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Expected heading (h2): What Sets Us Apart? ; cards: One Stop Shop, Make It Easy",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Scroll slowly from top to bottom so every section is revealed (some sections are hidden until scrolled into view)",
+      "Look at the \"What Sets Us Apart?\" section"
+    ],
+    "expected_result": "The h2 \"What Sets Us Apart?\" is visible with exactly 2 cards: \"One Stop Shop\" and \"Make It Easy\".",
+    "linked_requirement": "None"
+  },
+  {
+    "id": "TC-ABOUT-APART-002",
+    "title": "\"One Stop Shop\" card has image, heading and text",
+    "type": "UI",
+    "feature": "about",
+    "flow": "what-sets-us-apart",
+    "priority": "Medium",
+    "tags": [
+      "smoke"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Card: One Stop Shop",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Scroll slowly from top to bottom so every section is revealed (some sections are hidden until scrolled into view)",
+      "Inspect the \"One Stop Shop\" card"
+    ],
+    "expected_result": "The card contains an image, an h3 \"One Stop Shop\" and a non-empty text block.",
+    "linked_requirement": "None"
+  },
+  {
+    "id": "TC-ABOUT-APART-003",
+    "title": "\"Make It Easy\" card has image, heading and text",
+    "type": "UI",
+    "feature": "about",
+    "flow": "what-sets-us-apart",
+    "priority": "Medium",
+    "tags": [
+      "smoke"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Card: Make It Easy",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Scroll slowly from top to bottom so every section is revealed (some sections are hidden until scrolled into view)",
+      "Inspect the \"Make It Easy\" card"
+    ],
+    "expected_result": "The card contains an image, an h3 \"Make It Easy\" and a non-empty text block.",
+    "linked_requirement": "None"
+  },
+  {
+    "id": "TC-ABOUT-APART-004",
+    "title": "Card images load",
+    "type": "UI",
+    "feature": "about",
+    "flow": "what-sets-us-apart",
+    "priority": "Medium",
+    "tags": [
+      "negative"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Images: the 2 card images",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Scroll slowly from top to bottom so every section is revealed (some sections are hidden until scrolled into view)",
+      "Check each card image (complete = true, naturalWidth > 0)"
+    ],
+    "expected_result": "Both card images are displayed with real dimensions; no broken-image icons.",
+    "linked_requirement": "None"
+  }
+]

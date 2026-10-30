@@ -1,0 +1,73 @@
+[
+  {
+    "id": "TC-ABOUT-MAKE-001",
+    "title": "\"What We Make\" heading and copy are visible",
+    "type": "UI",
+    "feature": "about",
+    "flow": "what-we-make",
+    "priority": "Low",
+    "tags": [
+      "smoke"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Expected heading (h2): What We Make",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Scroll slowly from top to bottom so every section is revealed (some sections are hidden until scrolled into view)",
+      "Read the heading and the paragraphs below it"
+    ],
+    "expected_result": "The h2 \"What We Make\" is visible followed by one regular paragraph and one italic paragraph; no text is cut off.",
+    "linked_requirement": "None"
+  },
+  {
+    "id": "TC-ABOUT-MAKE-002",
+    "title": "CEO attribution is shown under the quote",
+    "type": "UI",
+    "feature": "about",
+    "flow": "what-we-make",
+    "priority": "Low",
+    "tags": [
+      "smoke"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Expected attribution: —Vipul Bhagat, President & CEO",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Scroll slowly from top to bottom so every section is revealed (some sections are hidden until scrolled into view)",
+      "Find the quote at the end of the \"What We Make\" section"
+    ],
+    "expected_result": "The quote is followed by the attribution \"—Vipul Bhagat, President & CEO\".",
+    "linked_requirement": "None"
+  },
+  {
+    "id": "TC-ABOUT-MAKE-003",
+    "title": "Section order: Design Leadership, What We Make, What Sets Us Apart",
+    "type": "UI",
+    "feature": "about",
+    "flow": "what-we-make",
+    "priority": "Low",
+    "tags": [
+      "boundary"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Expected order of h2: Who We Are, Design Leadership, What We Make, What Sets Us Apart?, Environmental Values",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "List all h2 headings in DOM order and compare with the visual order after scrolling"
+    ],
+    "expected_result": "The five h2 headings appear in the listed order, both in the DOM and visually.",
+    "linked_requirement": "None"
+  }
+]

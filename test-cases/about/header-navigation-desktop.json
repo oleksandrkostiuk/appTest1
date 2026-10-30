@@ -1,0 +1,211 @@
+[
+  {
+    "id": "TC-ABOUT-NAVD-001",
+    "title": "Header shows logo, all 7 nav links in order and search icon",
+    "type": "UI",
+    "feature": "about",
+    "flow": "header-navigation-desktop",
+    "priority": "Critical",
+    "tags": [
+      "smoke",
+      "regression"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Expected nav order: Products, Portfolio, Resources, About, Contact, Get a Quote, Get a Sample",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Look at the header at the top of the page",
+      "Read the nav labels left to right"
+    ],
+    "expected_result": "Header shows the Skyline logo, the links Products, Portfolio, Resources, About, Contact, Get a Quote, Get a Sample in this order, and a search icon. No label is missing, truncated or wrapped onto a second line.",
+    "linked_requirement": "https://elekshelp.atlassian.net/wiki/spaces/SKLN/pages/4199710724"
+  },
+  {
+    "id": "TC-ABOUT-NAVD-002",
+    "title": "Nav link hrefs point to the correct pages",
+    "type": "UI",
+    "feature": "about",
+    "flow": "header-navigation-desktop",
+    "priority": "High",
+    "tags": [
+      "smoke"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Products=/products/; Portfolio=/projects/; Resources=/resources/; About=/about/; Contact=/contact/; Get a Quote=/quote-request/; Get a Sample=/sample-request/",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Read the href attribute of each of the 7 header nav links"
+    ],
+    "expected_result": "Each href resolves to the path listed in Test Data (same dev host). Note: the label is \"Portfolio\" while the URL is /projects/.",
+    "linked_requirement": "https://elekshelp.atlassian.net/wiki/spaces/SKLN/pages/4199710724"
+  },
+  {
+    "id": "TC-ABOUT-NAVD-003",
+    "title": "Logo links to the home page",
+    "type": "UI",
+    "feature": "about",
+    "flow": "header-navigation-desktop",
+    "priority": "High",
+    "tags": [
+      "smoke"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Expected destination: https://dev.skyline.glass/",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Click the Skyline logo in the header"
+    ],
+    "expected_result": "Browser navigates to the home page (/) on the dev host; the home page renders without an error.",
+    "linked_requirement": "None"
+  },
+  {
+    "id": "TC-ABOUT-NAVD-004",
+    "title": "Products link opens the Products page",
+    "type": "UI",
+    "feature": "about",
+    "flow": "header-navigation-desktop",
+    "priority": "Medium",
+    "tags": [
+      "smoke"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Expected destination: /products/",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Click \"Products\" in the header"
+    ],
+    "expected_result": "URL becomes /products/ and the Products page loads (HTTP 200, no error page).",
+    "linked_requirement": "https://elekshelp.atlassian.net/wiki/spaces/SKLN/pages/4199710724"
+  },
+  {
+    "id": "TC-ABOUT-NAVD-005",
+    "title": "Contact link opens the Contact page",
+    "type": "UI",
+    "feature": "about",
+    "flow": "header-navigation-desktop",
+    "priority": "High",
+    "tags": [
+      "smoke"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Expected destination: /contact/",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Click \"Contact\" in the header"
+    ],
+    "expected_result": "URL becomes /contact/ and the Contact page loads (HTTP 200, no error page).",
+    "linked_requirement": "https://elekshelp.atlassian.net/wiki/spaces/SKLN/pages/4199710724"
+  },
+  {
+    "id": "TC-ABOUT-NAVD-006",
+    "title": "Get a Quote link opens the quote request page",
+    "type": "UI",
+    "feature": "about",
+    "flow": "header-navigation-desktop",
+    "priority": "High",
+    "tags": [
+      "smoke"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Expected destination: /quote-request/",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Click \"Get a Quote\" in the header"
+    ],
+    "expected_result": "URL becomes /quote-request/ and the quote request page loads (HTTP 200, no error page).",
+    "linked_requirement": "https://elekshelp.atlassian.net/wiki/spaces/SKLN/pages/4199710724"
+  },
+  {
+    "id": "TC-ABOUT-NAVD-007",
+    "title": "Get a Sample link opens the sample request page",
+    "type": "UI",
+    "feature": "about",
+    "flow": "header-navigation-desktop",
+    "priority": "High",
+    "tags": [
+      "smoke"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Expected destination: /sample-request/",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Click \"Get a Sample\" in the header"
+    ],
+    "expected_result": "URL becomes /sample-request/ and the sample request page loads (HTTP 200, no error page).",
+    "linked_requirement": "https://elekshelp.atlassian.net/wiki/spaces/SKLN/pages/4199710724"
+  },
+  {
+    "id": "TC-ABOUT-NAVD-008",
+    "title": "About nav item is shown as the current page",
+    "type": "UI",
+    "feature": "about",
+    "flow": "header-navigation-desktop",
+    "priority": "Medium",
+    "tags": [
+      "boundary"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Current page: /about/",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Compare the visual state of the \"About\" nav item with the other nav items (also check aria-current / active class)"
+    ],
+    "expected_result": "The \"About\" item has a distinct active/current state (style, class or aria-current) that the other nav items do not have.",
+    "linked_requirement": "None"
+  },
+  {
+    "id": "TC-ABOUT-NAVD-009",
+    "title": "Search icon opens the search UI",
+    "type": "UI",
+    "feature": "about",
+    "flow": "header-navigation-desktop",
+    "priority": "Medium",
+    "tags": [
+      "smoke"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Control: search icon at the right end of the header",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Click the search icon in the header"
+    ],
+    "expected_result": "A search input (field or overlay) becomes visible and receives focus; it can be closed again without leaving the page.",
+    "linked_requirement": "None"
+  }
+]

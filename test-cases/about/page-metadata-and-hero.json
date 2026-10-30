@@ -1,0 +1,167 @@
+[
+  {
+    "id": "TC-ABOUT-META-001",
+    "title": "Page title is \"About Skyline Design\"",
+    "type": "UI",
+    "feature": "about",
+    "flow": "page-metadata-and-hero",
+    "priority": "Critical",
+    "tags": [
+      "smoke",
+      "regression"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Expected title: About Skyline Design",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Read the browser tab / document title"
+    ],
+    "expected_result": "Document title is exactly \"About Skyline Design\".",
+    "linked_requirement": "None"
+  },
+  {
+    "id": "TC-ABOUT-META-002",
+    "title": "Hero heading text is visible on load",
+    "type": "UI",
+    "feature": "about",
+    "flow": "page-metadata-and-hero",
+    "priority": "Critical",
+    "tags": [
+      "smoke",
+      "regression"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Hero text: Over 40 years of Chicago-made glass.",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Look at the hero block at the top of the page"
+    ],
+    "expected_result": "The hero text \"Over 40 years of Chicago-made glass.\" is visible, fully opaque and not clipped or overlapped by the header.",
+    "linked_requirement": "None"
+  },
+  {
+    "id": "TC-ABOUT-META-003",
+    "title": "Page has a single non-empty H1 containing the hero text",
+    "type": "UI",
+    "feature": "about",
+    "flow": "page-metadata-and-hero",
+    "priority": "High",
+    "tags": [
+      "negative"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Expected H1: Over 40 years of Chicago-made glass.",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Inspect the page headings and count elements with tag h1",
+      "Read the text content of the h1"
+    ],
+    "expected_result": "Exactly one <h1> exists and its text is \"Over 40 years of Chicago-made glass.\" (currently the h1 is empty and the hero text is in a <div> — confirmed defect).",
+    "linked_requirement": "None"
+  },
+  {
+    "id": "TC-ABOUT-META-004",
+    "title": "Meta description is present and not empty",
+    "type": "UI",
+    "feature": "about",
+    "flow": "page-metadata-and-hero",
+    "priority": "High",
+    "tags": [
+      "smoke"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Selector: meta[name=\"description\"]",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Read the content attribute of meta[name=\"description\"] in the page head"
+    ],
+    "expected_result": "A meta description tag exists and its content is a non-empty, human-readable sentence (not a placeholder such as \"Just another WordPress site\").",
+    "linked_requirement": "None"
+  },
+  {
+    "id": "TC-ABOUT-META-005",
+    "title": "Canonical URL points to the dev /about/ page",
+    "type": "UI",
+    "feature": "about",
+    "flow": "page-metadata-and-hero",
+    "priority": "Medium",
+    "tags": [
+      "smoke"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Expected canonical: https://dev.skyline.glass/about/",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Read the href of link[rel=\"canonical\"] in the page head"
+    ],
+    "expected_result": "Canonical link equals https://dev.skyline.glass/about/ (no query string, includes trailing slash).",
+    "linked_requirement": "None"
+  },
+  {
+    "id": "TC-ABOUT-META-006",
+    "title": "Hero text reaches full opacity after the load animation",
+    "type": "UI",
+    "feature": "about",
+    "flow": "page-metadata-and-hero",
+    "priority": "Low",
+    "tags": [
+      "boundary"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Wait times: immediately after load, then 3 seconds later",
+    "steps": [
+      "Navigate to /about/ and immediately observe the hero text",
+      "Wait 3 seconds and observe the hero text again"
+    ],
+    "expected_result": "Hero text may be faint right after load, but after about 2-3 seconds it is fully opaque (computed opacity 1) and stays visible.",
+    "linked_requirement": "None"
+  },
+  {
+    "id": "TC-ABOUT-META-007",
+    "title": "Page loads without console errors",
+    "type": "UI",
+    "feature": "about",
+    "flow": "page-metadata-and-hero",
+    "priority": "Medium",
+    "tags": [
+      "negative",
+      "smoke"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Console level: error (warnings are allowed)",
+    "steps": [
+      "Open the browser console, then navigate to /about/ and wait for load",
+      "Review console entries of level \"error\""
+    ],
+    "expected_result": "Page returns HTTP 200 and the console contains 0 errors on initial load. Known warnings (GSAP \"target not found\", manifest start_url, deprecated apple-mobile-web-app-capable meta) are not failures.",
+    "linked_requirement": "None"
+  }
+]

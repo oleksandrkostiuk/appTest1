@@ -1,0 +1,146 @@
+[
+  {
+    "id": "TC-ABOUT-FOOT-001",
+    "title": "Footer shows all 15 navigation links",
+    "type": "UI",
+    "feature": "about",
+    "flow": "footer-navigation-and-legal",
+    "priority": "Medium",
+    "tags": [
+      "smoke"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Expected links: Home, Products, Collections, Patterns, Projects, About, History, Sustainability, Design Partners, News, Request a Sample, Request a Quote, Careers, Resources, Contact",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Scroll to the footer",
+      "Read the labels of the footer navigation links"
+    ],
+    "expected_result": "Exactly the 15 links listed in Test Data are shown (the footer label is \"Projects\" while the header label is \"Portfolio\").",
+    "linked_requirement": "https://elekshelp.atlassian.net/wiki/spaces/SKLN/pages/4199710724"
+  },
+  {
+    "id": "TC-ABOUT-FOOT-002",
+    "title": "Footer nav link hrefs point to the correct pages",
+    "type": "UI",
+    "feature": "about",
+    "flow": "footer-navigation-and-legal",
+    "priority": "Medium",
+    "tags": [
+      "smoke"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Home=/; Products=/products/; Collections=/collections/; Patterns=/patterns/; Projects=/projects/; About=/about/; History=/history/; Sustainability=/sustainability/; Design Partners=/design-partners/; News=/news/; Request a Sample=/sample-request/; Request a Quote=/quote-request/; Careers=/careers/; Resources=/resources/; Contact=/contact/",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Scroll to the footer",
+      "Read the href of each footer navigation link"
+    ],
+    "expected_result": "Each href equals the path in Test Data on the dev host.",
+    "linked_requirement": "https://elekshelp.atlassian.net/wiki/spaces/SKLN/pages/4199710724"
+  },
+  {
+    "id": "TC-ABOUT-FOOT-003",
+    "title": "Footer nav links resolve without errors",
+    "type": "UI",
+    "feature": "about",
+    "flow": "footer-navigation-and-legal",
+    "priority": "Medium",
+    "tags": [
+      "negative"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Links: the 15 footer navigation links",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Scroll to the footer",
+      "Request or open each footer navigation link"
+    ],
+    "expected_result": "Every link returns a success status and renders a page (no 404/500). Content of the target pages is not asserted.",
+    "linked_requirement": "None"
+  },
+  {
+    "id": "TC-ABOUT-FOOT-004",
+    "title": "Footer copyright line shows the current year range",
+    "type": "UI",
+    "feature": "about",
+    "flow": "footer-navigation-and-legal",
+    "priority": "Low",
+    "tags": [
+      "boundary"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Expected pattern: Skyline Design © 2020-<current year> | All Rights Reserved.",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Scroll to the footer",
+      "Read the copyright line"
+    ],
+    "expected_result": "The line matches \"Skyline Design © 2020-<current year> | All Rights Reserved.\" where the end year equals the current year. The year is not hard-coded.",
+    "linked_requirement": "https://elekshelp.atlassian.net/wiki/spaces/SKLN/pages/4199710724"
+  },
+  {
+    "id": "TC-ABOUT-FOOT-005",
+    "title": "Privacy Policy link opens the Privacy Policy page",
+    "type": "UI",
+    "feature": "about",
+    "flow": "footer-navigation-and-legal",
+    "priority": "Medium",
+    "tags": [
+      "smoke"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Expected destination: /privacy-policy/",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Scroll to the footer",
+      "Click \"Privacy Policy\""
+    ],
+    "expected_result": "URL becomes /privacy-policy/ and the page loads (HTTP 200, no error page).",
+    "linked_requirement": "None"
+  },
+  {
+    "id": "TC-ABOUT-FOOT-006",
+    "title": "Terms & Conditions link opens the Terms page",
+    "type": "UI",
+    "feature": "about",
+    "flow": "footer-navigation-and-legal",
+    "priority": "Medium",
+    "tags": [
+      "smoke"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Expected destination: /terms-conditions/",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Scroll to the footer",
+      "Click \"Terms & Conditions\""
+    ],
+    "expected_result": "URL becomes /terms-conditions/ and the page loads (HTTP 200, no error page).",
+    "linked_requirement": "None"
+  }
+]
