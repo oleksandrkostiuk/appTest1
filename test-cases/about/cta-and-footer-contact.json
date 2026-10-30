@@ -1,0 +1,194 @@
+[
+  {
+    "id": "TC-ABOUT-CTA-001",
+    "title": "CTA band shows headline and Contact button",
+    "type": "UI",
+    "feature": "about",
+    "flow": "cta-and-footer-contact",
+    "priority": "Medium",
+    "tags": [
+      "smoke"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Expected headline: Transforming glass since 1983. ; button: Contact",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Scroll to the call-to-action band above the footer"
+    ],
+    "expected_result": "The band shows \"Transforming glass since 1983.\" and a visible \"Contact\" button.",
+    "linked_requirement": "None"
+  },
+  {
+    "id": "TC-ABOUT-CTA-002",
+    "title": "CTA Contact button opens the Contact page",
+    "type": "UI",
+    "feature": "about",
+    "flow": "cta-and-footer-contact",
+    "priority": "High",
+    "tags": [
+      "smoke"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Expected destination: /contact (no trailing slash in href; final URL may redirect to /contact/)",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Scroll to the CTA band",
+      "Click the \"Contact\" button"
+    ],
+    "expected_result": "The Contact page loads (HTTP 200, no error page). Either /contact or /contact/ is accepted as the final URL.",
+    "linked_requirement": "https://elekshelp.atlassian.net/wiki/spaces/SKLN/pages/4199710724"
+  },
+  {
+    "id": "TC-ABOUT-CTA-003",
+    "title": "Footer shows the company address",
+    "type": "UI",
+    "feature": "about",
+    "flow": "cta-and-footer-contact",
+    "priority": "Medium",
+    "tags": [
+      "smoke"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Expected address: Skyline 1240 N Homan Ave Chicago, IL 60651",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Scroll to the footer",
+      "Read the address block"
+    ],
+    "expected_result": "The footer address reads \"Skyline 1240 N Homan Ave Chicago, IL 60651\".",
+    "linked_requirement": "https://elekshelp.atlassian.net/wiki/spaces/SKLN/pages/4199710724"
+  },
+  {
+    "id": "TC-ABOUT-CTA-004",
+    "title": "Footer email is a working mailto link",
+    "type": "UI",
+    "feature": "about",
+    "flow": "cta-and-footer-contact",
+    "priority": "Medium",
+    "tags": [
+      "smoke"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Expected: sales@skyline.glass",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Scroll to the footer",
+      "Read the email text and the href of the link"
+    ],
+    "expected_result": "The text is \"sales@skyline.glass\" and the link href is mailto:sales@skyline.glass.",
+    "linked_requirement": "https://elekshelp.atlassian.net/wiki/spaces/SKLN/pages/4199710724"
+  },
+  {
+    "id": "TC-ABOUT-CTA-005",
+    "title": "Footer phone number shows the live value and is a tel link",
+    "type": "UI",
+    "feature": "about",
+    "flow": "cta-and-footer-contact",
+    "priority": "Medium",
+    "tags": [
+      "smoke"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Expected: 773-278-4660 (the Jul 2025 checklist value 773-825-6203 is considered stale)",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Scroll to the footer",
+      "Read the phone text and the href of the link"
+    ],
+    "expected_result": "The phone text is \"773-278-4660\" and the link href is a tel: link with the same number.",
+    "linked_requirement": "https://elekshelp.atlassian.net/wiki/spaces/SKLN/pages/4199710724"
+  },
+  {
+    "id": "TC-ABOUT-CTA-006",
+    "title": "Four social links are present and open safely in a new tab",
+    "type": "UI",
+    "feature": "about",
+    "flow": "cta-and-footer-contact",
+    "priority": "Medium",
+    "tags": [
+      "security"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Expected: Instagram, LinkedIn, Facebook, YouTube; target=_blank; rel includes noopener",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Scroll to the footer",
+      "Read href, target and rel of the four social links"
+    ],
+    "expected_result": "There are exactly 4 social links (Instagram, LinkedIn, Facebook, YouTube), each with target=\"_blank\" and rel containing \"noopener\". Only attributes are asserted, never the content of the social pages (they block automation).",
+    "linked_requirement": "None"
+  },
+  {
+    "id": "TC-ABOUT-CTA-007",
+    "title": "Clicking a social link opens a new tab and keeps the About page",
+    "type": "UI",
+    "feature": "about",
+    "flow": "cta-and-footer-contact",
+    "priority": "Medium",
+    "tags": [
+      "smoke"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Link: Instagram (any social link may be used)",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Scroll to the footer",
+      "Click the Instagram social icon"
+    ],
+    "expected_result": "A new tab/window opens for the social URL and the original tab still shows /about/. Content of the social page is not asserted.",
+    "linked_requirement": "None"
+  },
+  {
+    "id": "TC-ABOUT-CTA-008",
+    "title": "All social links use HTTPS",
+    "type": "UI",
+    "feature": "about",
+    "flow": "cta-and-footer-contact",
+    "priority": "High",
+    "tags": [
+      "security",
+      "negative"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Expected scheme: https:// for Instagram, LinkedIn, Facebook, YouTube (currently YouTube is http://www.youtube.com/@skyline-glass)",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Scroll to the footer",
+      "Read the href of each social link and check its scheme"
+    ],
+    "expected_result": "All four hrefs start with https://. An http:// link is a defect (the browser blocks it as Mixed Content).",
+    "linked_requirement": "None"
+  }
+]
