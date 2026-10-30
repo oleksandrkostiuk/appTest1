@@ -1,0 +1,168 @@
+[
+  {
+    "id": "TC-ABOUT-MMENU-001",
+    "title": "Hamburger is shown and desktop nav is hidden on mobile",
+    "type": "UI",
+    "feature": "about",
+    "flow": "mobile-menu",
+    "priority": "High",
+    "tags": [
+      "smoke"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Mobile viewport 375x812",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Viewport: 375x812; control: #menu-burger-opener",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Look at the header"
+    ],
+    "expected_result": "The header shows the logo, a search icon and a hamburger icon. The desktop nav links are not displayed.",
+    "linked_requirement": "None"
+  },
+  {
+    "id": "TC-ABOUT-MMENU-002",
+    "title": "Hamburger opens the menu with all expected items",
+    "type": "UI",
+    "feature": "about",
+    "flow": "mobile-menu",
+    "priority": "Critical",
+    "tags": [
+      "smoke",
+      "regression"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Mobile viewport 375x812",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Expected items: Products, Portfolio, Resources, About, Contact, Get a Quote, Get a Sample",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Tap the hamburger icon",
+      "Read the items of the opened menu"
+    ],
+    "expected_result": "The menu opens and lists Products, Portfolio, Resources, About, Contact, Get a Quote and Get a Sample.",
+    "linked_requirement": "https://elekshelp.atlassian.net/wiki/spaces/SKLN/pages/4199710724"
+  },
+  {
+    "id": "TC-ABOUT-MMENU-003",
+    "title": "Menu opening slides the page and shows the menu panel",
+    "type": "UI",
+    "feature": "about",
+    "flow": "mobile-menu",
+    "priority": "Low",
+    "tags": [
+      "boundary"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Mobile viewport 375x812",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Expected: page content slides left; dark-blue menu panel",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Tap the hamburger icon",
+      "Observe the page content and the menu panel"
+    ],
+    "expected_result": "The page content slides to the left and a dark-blue menu panel is shown; no content overlaps the menu items.",
+    "linked_requirement": "None"
+  },
+  {
+    "id": "TC-ABOUT-MMENU-004",
+    "title": "Menu item navigates to the correct page",
+    "type": "UI",
+    "feature": "about",
+    "flow": "mobile-menu",
+    "priority": "High",
+    "tags": [
+      "smoke"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Mobile viewport 375x812",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Item: Contact -> /contact/",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Tap the hamburger icon",
+      "Tap \"Contact\""
+    ],
+    "expected_result": "URL becomes /contact/ and the Contact page loads (HTTP 200, no error page).",
+    "linked_requirement": "https://elekshelp.atlassian.net/wiki/spaces/SKLN/pages/4199710724"
+  },
+  {
+    "id": "TC-ABOUT-MMENU-005",
+    "title": "Menu can be closed and the page returns to normal",
+    "type": "UI",
+    "feature": "about",
+    "flow": "mobile-menu",
+    "priority": "High",
+    "tags": [
+      "smoke"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Mobile viewport 375x812",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Close control: hamburger icon (or close icon if shown)",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Tap the hamburger icon to open the menu",
+      "Tap the same control again (or the close icon)"
+    ],
+    "expected_result": "The menu closes, the page content slides back, and the /about/ page is fully visible and scrollable.",
+    "linked_requirement": "None"
+  },
+  {
+    "id": "TC-ABOUT-MMENU-006",
+    "title": "Search icon is available next to the hamburger on mobile",
+    "type": "UI",
+    "feature": "about",
+    "flow": "mobile-menu",
+    "priority": "Medium",
+    "tags": [
+      "smoke"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Mobile viewport 375x812",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Control: search icon in the mobile header",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Tap the search icon in the header"
+    ],
+    "expected_result": "A search input becomes visible; it can be closed again without leaving the page.",
+    "linked_requirement": "None"
+  },
+  {
+    "id": "TC-ABOUT-MMENU-007",
+    "title": "Hamburger is not shown on desktop",
+    "type": "UI",
+    "feature": "about",
+    "flow": "mobile-menu",
+    "priority": "Medium",
+    "tags": [
+      "boundary"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Viewport: 1536x864",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Look at the header and check whether #menu-burger-opener is displayed"
+    ],
+    "expected_result": "The hamburger is not displayed; the full desktop nav is shown instead.",
+    "linked_requirement": "None"
+  }
+]
