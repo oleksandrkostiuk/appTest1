@@ -1,0 +1,476 @@
+[
+  {
+    "id": "TC-ABOUT-A11Y-006",
+    "title": "[a11y] Hamburger can be focused and operated with the keyboard",
+    "feature": "about",
+    "flow": "accessibility-basics",
+    "priority": "High",
+    "type": "UI",
+    "status": "fail",
+    "actual_result": "At 375x812 the hamburger is a <span class=\"menu-burger\"> with no tabindex, role or aria-label. Tab order went skip-link -> logo -> body content links; the hamburger never received focus (also not within 40 Tab presses on retry), so Enter/Space could not be tested on it.",
+    "expected_result": "The hamburger is reachable with Tab, shows a visible focus indicator, and opens/closes the menu with Enter and Space (currently it is a <span> without tabindex or role).",
+    "error_message": "Hamburger not keyboard focusable: document.activeElement never equals .menu-burger",
+    "attempts": [
+      {
+        "n": 1,
+        "status": "fail",
+        "note": "Tab sequence: skip-link, logo, then in-content links (History, HPD pdf, Resources...); hamburger skipped."
+      },
+      {
+        "n": 2,
+        "status": "fail",
+        "note": "After reload, 40 Tab presses: hamburger never focused; menu stayed closed."
+      }
+    ],
+    "evidence": {
+      "screenshot": "screenshots/TC-ABOUT-A11Y-006.png",
+      "request": null,
+      "response": null
+    },
+    "environment": "dev",
+    "base_url": "https://dev.skyline.glass/",
+    "executed_at": "2026-10-30T16:13:00Z"
+  },
+  {
+    "id": "TC-ABOUT-CTA-002",
+    "title": "CTA Contact button opens the Contact page",
+    "feature": "about",
+    "flow": "cta-and-footer-contact",
+    "priority": "High",
+    "type": "UI",
+    "status": "pass",
+    "actual_result": "Clicking the CTA band \"Contact\" button (a.box-link, href /contact) navigated to https://dev.skyline.glass/contact/ (HTTP 200, title \"Contact - Skyline\", h1 \"Contact Us\").",
+    "expected_result": "The Contact page loads (HTTP 200, no error page). Either /contact or /contact/ is accepted as the final URL.",
+    "error_message": null,
+    "attempts": [],
+    "evidence": {
+      "screenshot": null,
+      "request": null,
+      "response": null
+    },
+    "environment": "dev",
+    "base_url": "https://dev.skyline.glass/",
+    "executed_at": "2026-10-30T16:14:00Z"
+  },
+  {
+    "id": "TC-ABOUT-CTA-008",
+    "title": "All social links use HTTPS",
+    "feature": "about",
+    "flow": "cta-and-footer-contact",
+    "priority": "High",
+    "type": "UI",
+    "status": "fail",
+    "actual_result": "Footer social hrefs: Instagram https://, LinkedIn https://, Facebook https://, YouTube http://www.youtube.com/@skyline-glass (not HTTPS). Same result on both attempts.",
+    "expected_result": "All four hrefs start with https://. An http:// link is a defect (the browser blocks it as Mixed Content).",
+    "error_message": "YouTube link uses http:// scheme",
+    "attempts": [
+      {
+        "n": 1,
+        "status": "fail",
+        "note": "YouTube href is http://www.youtube.com/@skyline-glass"
+      },
+      {
+        "n": 2,
+        "status": "fail",
+        "note": "After reload, same http:// YouTube href"
+      }
+    ],
+    "evidence": {
+      "screenshot": "screenshots/TC-ABOUT-CTA-008.png",
+      "request": null,
+      "response": null
+    },
+    "environment": "dev",
+    "base_url": "https://dev.skyline.glass/",
+    "executed_at": "2026-10-30T16:15:00Z"
+  },
+  {
+    "id": "TC-ABOUT-LEAD-003",
+    "title": "Five portraits are displayed and load",
+    "feature": "about",
+    "flow": "design-leadership",
+    "priority": "High",
+    "type": "UI",
+    "status": "pass",
+    "actual_result": "Design Leadership carousel shows exactly 5 portraits (Girard, Urquiola, Bouroullec, Scholten & Baijings, Tick); all render visibly and each image URL loads (naturalWidth 300-398). Note: portraits are CSS background-images on .image-holder divs, not <img> elements, so the naturalWidth check was done by loading each background URL.",
+    "expected_result": "Exactly 5 portraits are present and each renders as an image (no broken-image icon).",
+    "error_message": null,
+    "attempts": [],
+    "evidence": {
+      "screenshot": null,
+      "request": null,
+      "response": null
+    },
+    "environment": "dev",
+    "base_url": "https://dev.skyline.glass/",
+    "executed_at": "2026-10-30T16:16:00Z"
+  },
+  {
+    "id": "TC-ABOUT-NAVD-001",
+    "title": "Header shows logo, all 7 nav links in order and search icon",
+    "feature": "about",
+    "flow": "header-navigation-desktop",
+    "priority": "Critical",
+    "type": "UI",
+    "status": "pass",
+    "actual_result": "Header shows the Skyline logo, nav links in order Products, Portfolio, Resources, About, Contact, Get a Quote, Get a Sample (all on one row, same y=32 and height 51), and a search icon (span.header__search). No label truncated or wrapped.",
+    "expected_result": "Header shows the Skyline logo, the links Products, Portfolio, Resources, About, Contact, Get a Quote, Get a Sample in this order, and a search icon. No label is missing, truncated or wrapped onto a second line.",
+    "error_message": null,
+    "attempts": [],
+    "evidence": {
+      "screenshot": null,
+      "request": null,
+      "response": null
+    },
+    "environment": "dev",
+    "base_url": "https://dev.skyline.glass/",
+    "executed_at": "2026-10-30T16:17:00Z"
+  },
+  {
+    "id": "TC-ABOUT-NAVD-002",
+    "title": "Nav link hrefs point to the correct pages",
+    "feature": "about",
+    "flow": "header-navigation-desktop",
+    "priority": "High",
+    "type": "UI",
+    "status": "pass",
+    "actual_result": "Hrefs on dev host: Products=/products/, Portfolio=/projects/, Resources=/resources/, About=/about/, Contact=/contact/, Get a Quote=/quote-request/, Get a Sample=/sample-request/ - all match Test Data.",
+    "expected_result": "Each href resolves to the path listed in Test Data (same dev host). Note: the label is \"Portfolio\" while the URL is /projects/.",
+    "error_message": null,
+    "attempts": [],
+    "evidence": {
+      "screenshot": null,
+      "request": null,
+      "response": null
+    },
+    "environment": "dev",
+    "base_url": "https://dev.skyline.glass/",
+    "executed_at": "2026-10-30T16:17:30Z"
+  },
+  {
+    "id": "TC-ABOUT-NAVD-003",
+    "title": "Logo links to the home page",
+    "feature": "about",
+    "flow": "header-navigation-desktop",
+    "priority": "High",
+    "type": "UI",
+    "status": "pass",
+    "actual_result": "Clicking the header logo navigated to https://dev.skyline.glass/ (HTTP 200, title \"Decorative Glass, Whiteboards, and Smart Glass Products\"); home page rendered without error.",
+    "expected_result": "Browser navigates to the home page (/) on the dev host; the home page renders without an error.",
+    "error_message": null,
+    "attempts": [],
+    "evidence": {
+      "screenshot": null,
+      "request": null,
+      "response": null
+    },
+    "environment": "dev",
+    "base_url": "https://dev.skyline.glass/",
+    "executed_at": "2026-10-30T16:18:00Z"
+  },
+  {
+    "id": "TC-ABOUT-NAVD-005",
+    "title": "Contact link opens the Contact page",
+    "feature": "about",
+    "flow": "header-navigation-desktop",
+    "priority": "High",
+    "type": "UI",
+    "status": "pass",
+    "actual_result": "Clicking \"Contact\" in the header navigated to https://dev.skyline.glass/contact/ (HTTP 200, title \"Contact - Skyline\", h1 \"Contact Us\").",
+    "expected_result": "URL becomes /contact/ and the Contact page loads (HTTP 200, no error page).",
+    "error_message": null,
+    "attempts": [],
+    "evidence": {
+      "screenshot": null,
+      "request": null,
+      "response": null
+    },
+    "environment": "dev",
+    "base_url": "https://dev.skyline.glass/",
+    "executed_at": "2026-10-30T16:18:30Z"
+  },
+  {
+    "id": "TC-ABOUT-NAVD-006",
+    "title": "Get a Quote link opens the quote request page",
+    "feature": "about",
+    "flow": "header-navigation-desktop",
+    "priority": "High",
+    "type": "UI",
+    "status": "pass",
+    "actual_result": "Clicking \"Get a Quote\" navigated to https://dev.skyline.glass/quote-request/ (HTTP 200, title \"Request a Quote - Skyline\", h1 \"Request a Quote\").",
+    "expected_result": "URL becomes /quote-request/ and the quote request page loads (HTTP 200, no error page).",
+    "error_message": null,
+    "attempts": [],
+    "evidence": {
+      "screenshot": null,
+      "request": null,
+      "response": null
+    },
+    "environment": "dev",
+    "base_url": "https://dev.skyline.glass/",
+    "executed_at": "2026-10-30T16:19:00Z"
+  },
+  {
+    "id": "TC-ABOUT-NAVD-007",
+    "title": "Get a Sample link opens the sample request page",
+    "feature": "about",
+    "flow": "header-navigation-desktop",
+    "priority": "High",
+    "type": "UI",
+    "status": "pass",
+    "actual_result": "Clicking \"Get a Sample\" navigated to https://dev.skyline.glass/sample-request/ (HTTP 200, title \"Request a Sample - Skyline\", h1 \"Request a Sample\").",
+    "expected_result": "URL becomes /sample-request/ and the sample request page loads (HTTP 200, no error page).",
+    "error_message": null,
+    "attempts": [],
+    "evidence": {
+      "screenshot": null,
+      "request": null,
+      "response": null
+    },
+    "environment": "dev",
+    "base_url": "https://dev.skyline.glass/",
+    "executed_at": "2026-10-30T16:19:30Z"
+  },
+  {
+    "id": "TC-ABOUT-MMENU-001",
+    "title": "Hamburger is shown and desktop nav is hidden on mobile",
+    "feature": "about",
+    "flow": "mobile-menu",
+    "priority": "High",
+    "type": "UI",
+    "status": "pass",
+    "actual_result": "At 375x812 the header shows the SKYLINE logo, a search icon and the hamburger (#menu-burger-opener, 50x50, visible). The only visible link in the header area is the logo; no desktop nav links are displayed.",
+    "expected_result": "The header shows the logo, a search icon and a hamburger icon. The desktop nav links are not displayed.",
+    "error_message": null,
+    "attempts": [],
+    "evidence": {
+      "screenshot": null,
+      "request": null,
+      "response": null
+    },
+    "environment": "dev",
+    "base_url": "https://dev.skyline.glass/",
+    "executed_at": "2026-10-30T16:16:30Z"
+  },
+  {
+    "id": "TC-ABOUT-MMENU-002",
+    "title": "Hamburger opens the menu with all expected items",
+    "feature": "about",
+    "flow": "mobile-menu",
+    "priority": "Critical",
+    "type": "UI",
+    "status": "pass",
+    "actual_result": "Tapping the hamburger opened a full-screen menu listing Products, Portfolio, Resources, About, Contact, Get a Quote and Get a Sample.",
+    "expected_result": "The menu opens and lists Products, Portfolio, Resources, About, Contact, Get a Quote and Get a Sample.",
+    "error_message": null,
+    "attempts": [],
+    "evidence": {
+      "screenshot": null,
+      "request": null,
+      "response": null
+    },
+    "environment": "dev",
+    "base_url": "https://dev.skyline.glass/",
+    "executed_at": "2026-10-30T16:16:40Z"
+  },
+  {
+    "id": "TC-ABOUT-MMENU-004",
+    "title": "Menu item navigates to the correct page",
+    "feature": "about",
+    "flow": "mobile-menu",
+    "priority": "High",
+    "type": "UI",
+    "status": "pass",
+    "actual_result": "After opening the menu and tapping Contact, the URL became https://dev.skyline.glass/contact/ and the page loaded with HTTP 200, title 'Contact - Skyline', H1 'Contact Us'. (A first click attempt on a duplicate hidden menu node timed out; clicking the visible menu link worked, no retry of the page flow was needed.)",
+    "expected_result": "URL becomes /contact/ and the Contact page loads (HTTP 200, no error page).",
+    "error_message": null,
+    "attempts": [],
+    "evidence": {
+      "screenshot": null,
+      "request": null,
+      "response": null
+    },
+    "environment": "dev",
+    "base_url": "https://dev.skyline.glass/",
+    "executed_at": "2026-10-30T16:17:12Z"
+  },
+  {
+    "id": "TC-ABOUT-MMENU-005",
+    "title": "Menu can be closed and the page returns to normal",
+    "feature": "about",
+    "flow": "mobile-menu",
+    "priority": "High",
+    "type": "UI",
+    "status": "pass",
+    "actual_result": "Tapping the hamburger opened the menu; tapping #menu-burger-opener again closed it (menu nav became visibility:hidden/opacity:0). The /about/ hero and header were fully visible again and the page scrolled normally (scrollY reached 600 and 1200; html uses smooth scroll-behavior).",
+    "expected_result": "The menu closes, the page content slides back, and the /about/ page is fully visible and scrollable.",
+    "error_message": null,
+    "attempts": [],
+    "evidence": {
+      "screenshot": null,
+      "request": null,
+      "response": null
+    },
+    "environment": "dev",
+    "base_url": "https://dev.skyline.glass/",
+    "executed_at": "2026-10-30T16:17:45Z"
+  },
+  {
+    "id": "TC-ABOUT-META-001",
+    "title": "Page title is \"About Skyline Design\"",
+    "feature": "about",
+    "flow": "page-metadata-and-hero",
+    "priority": "Critical",
+    "type": "UI",
+    "status": "pass",
+    "actual_result": "document.title is exactly \"About Skyline Design\" at 1536x864.",
+    "expected_result": "Document title is exactly \"About Skyline Design\".",
+    "error_message": null,
+    "attempts": [],
+    "evidence": {
+      "screenshot": null,
+      "request": null,
+      "response": null
+    },
+    "environment": "dev",
+    "base_url": "https://dev.skyline.glass/",
+    "executed_at": "2026-10-30T16:18:10Z"
+  },
+  {
+    "id": "TC-ABOUT-META-002",
+    "title": "Hero heading text is visible on load",
+    "feature": "about",
+    "flow": "page-metadata-and-hero",
+    "priority": "Critical",
+    "type": "UI",
+    "status": "pass",
+    "actual_result": "After ~3s the hero text \"Over 40 years of Chicago-made glass.\" is visible (effective opacity 1, visibility visible, 904x52 at y=387), centred over the hero image and not clipped or overlapped by the 84px header.",
+    "expected_result": "The hero text \"Over 40 years of Chicago-made glass.\" is visible, fully opaque and not clipped or overlapped by the header.",
+    "error_message": null,
+    "attempts": [],
+    "evidence": {
+      "screenshot": null,
+      "request": null,
+      "response": null
+    },
+    "environment": "dev",
+    "base_url": "https://dev.skyline.glass/",
+    "executed_at": "2026-10-30T16:18:14Z"
+  },
+  {
+    "id": "TC-ABOUT-META-003",
+    "title": "Page has a single non-empty H1 containing the hero text",
+    "feature": "about",
+    "flow": "page-metadata-and-hero",
+    "priority": "High",
+    "type": "UI",
+    "status": "fail",
+    "actual_result": "Exactly one <h1> exists but it is empty (innerHTML is a single space); the hero text \"Over 40 years of Chicago-made glass.\" is rendered in a <div class=\"font-bold type-42 ...\"> instead. Reproduced on both attempts.",
+    "expected_result": "Exactly one <h1> exists and its text is \"Over 40 years of Chicago-made glass.\" (currently the h1 is empty and the hero text is in a <div> — confirmed defect).",
+    "error_message": "Assertion mismatch: h1 text is \"\" (expected \"Over 40 years of Chicago-made glass.\")",
+    "attempts": [
+      {
+        "n": 1,
+        "status": "fail",
+        "note": "h1 count = 1, h1 text empty; hero text is in a DIV."
+      },
+      {
+        "n": 2,
+        "status": "fail",
+        "note": "After reload: h1 count = 1, <h1 class=\"font-bold type-16 gutter uppercase pb-40 pt-20 onload-bringup\"> </h1> still empty."
+      }
+    ],
+    "evidence": {
+      "screenshot": "screenshots/TC-ABOUT-META-003.png",
+      "request": null,
+      "response": null
+    },
+    "environment": "dev",
+    "base_url": "https://dev.skyline.glass/",
+    "executed_at": "2026-10-30T16:18:30Z"
+  },
+  {
+    "id": "TC-ABOUT-META-004",
+    "title": "Meta description is present and not empty",
+    "feature": "about",
+    "flow": "page-metadata-and-hero",
+    "priority": "High",
+    "type": "UI",
+    "status": "pass",
+    "actual_result": "One meta[name=\"description\"] exists with content \"Skyline Design is your source for sustainable architectural glass products: whiteboards, partitions, railings, doors, smart glass and more. Contact us today.\" — a non-empty, human-readable sentence, not a placeholder.",
+    "expected_result": "A meta description tag exists and its content is a non-empty, human-readable sentence (not a placeholder such as \"Just another WordPress site\").",
+    "error_message": null,
+    "attempts": [],
+    "evidence": {
+      "screenshot": null,
+      "request": null,
+      "response": null
+    },
+    "environment": "dev",
+    "base_url": "https://dev.skyline.glass/",
+    "executed_at": "2026-10-30T16:18:14Z"
+  },
+  {
+    "id": "TC-ABOUT-RESP-001",
+    "title": "No horizontal overflow on desktop (1536px)",
+    "feature": "about",
+    "flow": "responsive-layout",
+    "priority": "High",
+    "type": "UI",
+    "status": "pass",
+    "actual_result": "After loading /about/ at 1536x864 and scrolling top to bottom (page height 6835px), document.documentElement.scrollWidth was 1526 (max over the whole scroll), not exceeding the 1536px viewport. No horizontal scrollbar; only the off-screen reCAPTCHA badge extends past the viewport and does not affect scrollWidth.",
+    "expected_result": "scrollWidth does not exceed the viewport width; there is no horizontal scrollbar and no section is cut off.",
+    "error_message": null,
+    "attempts": [],
+    "evidence": {
+      "screenshot": null,
+      "request": null,
+      "response": null
+    },
+    "environment": "dev",
+    "base_url": "https://dev.skyline.glass/",
+    "executed_at": "2026-10-30T16:19:30Z"
+  },
+  {
+    "id": "TC-ABOUT-RESP-002",
+    "title": "No horizontal overflow on tablet (768px)",
+    "feature": "about",
+    "flow": "responsive-layout",
+    "priority": "High",
+    "type": "UI",
+    "status": "pass",
+    "actual_result": "After loading /about/ at 768x1024 and scrolling top to bottom (page height 8350px), document.documentElement.scrollWidth was 758 (max over the whole scroll), not exceeding the 768px viewport. No horizontal scrollbar; only the collapsed off-canvas mobile menu and the reCAPTCHA badge extend past the viewport and do not affect scrollWidth.",
+    "expected_result": "scrollWidth does not exceed the viewport width; there is no horizontal scrollbar and no section is cut off.",
+    "error_message": null,
+    "attempts": [],
+    "evidence": {
+      "screenshot": null,
+      "request": null,
+      "response": null
+    },
+    "environment": "dev",
+    "base_url": "https://dev.skyline.glass/",
+    "executed_at": "2026-10-30T16:20:10Z"
+  },
+  {
+    "id": "TC-ABOUT-RESP-003",
+    "title": "No horizontal overflow on mobile (375px)",
+    "feature": "about",
+    "flow": "responsive-layout",
+    "priority": "High",
+    "type": "UI",
+    "status": "pass",
+    "actual_result": "After loading /about/ at 375x812 and scrolling top to bottom (page height 10653px), document.documentElement.scrollWidth was 365 (max over the whole scroll), not exceeding the 375px viewport. No horizontal scrollbar; only the collapsed off-canvas mobile menu and the reCAPTCHA badge extend past the viewport and do not affect scrollWidth.",
+    "expected_result": "scrollWidth does not exceed the viewport width; there is no horizontal scrollbar and no section is cut off.",
+    "error_message": null,
+    "attempts": [],
+    "evidence": {
+      "screenshot": null,
+      "request": null,
+      "response": null
+    },
+    "environment": "dev",
+    "base_url": "https://dev.skyline.glass/",
+    "executed_at": "2026-10-30T16:20:45Z"
+  }
+]

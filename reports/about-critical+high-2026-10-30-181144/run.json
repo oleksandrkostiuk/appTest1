@@ -1,0 +1,33 @@
+{
+  "run_id": "about-critical+high-2026-10-30-181144",
+  "label": "about-critical+high",
+  "environment": "dev",
+  "base_url": "https://dev.skyline.glass/",
+  "selection": "feature=about priority=Critical+High (21 cases)",
+  "model": "claude-sonnet-5-5",
+  "started_at": "2026-10-30T16:13:00Z",
+  "finished_at": "2026-10-30T16:20:45Z",
+  "batches": 3,
+  "counts": {
+    "total": 21,
+    "pass": 18,
+    "fail": 3,
+    "blocked": 0,
+    "flaky": 0
+  },
+  "pass_rate": "85.7%",
+  "notes": [
+    {
+      "kind": "decision",
+      "text": "TC-ABOUT-A11Y-006 failed: the mobile hamburger is a span with no tabindex, role or aria-label and is never reachable by keyboard. Likely a product accessibility defect; confirm and file a bug."
+    },
+    {
+      "kind": "decision",
+      "text": "TC-ABOUT-CTA-008 failed: the footer YouTube link uses http://www.youtube.com/@skyline-glass, not HTTPS. Likely a product defect (content/config); confirm and file a bug."
+    },
+    {
+      "kind": "decision",
+      "text": "TC-ABOUT-META-003 failed: the page has one empty <h1> and the hero text sits in a styled <div>. Likely an SEO/accessibility defect; confirm and file a bug."
+    }
+  ]
+}
