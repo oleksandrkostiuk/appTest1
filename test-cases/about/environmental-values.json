@@ -1,0 +1,122 @@
+[
+  {
+    "id": "TC-ABOUT-ENV-001",
+    "title": "Five subsections are shown in the expected order",
+    "type": "UI",
+    "feature": "about",
+    "flow": "environmental-values",
+    "priority": "Medium",
+    "tags": [
+      "smoke"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Expected h3 order: Testing Data; Local Sourcing; No Acid, No Sand; Recycling for Reduced Impact; Eco-Friendly Packaging Solutions",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Scroll slowly from top to bottom so every section is revealed (some sections are hidden until scrolled into view)",
+      "Read the h3 headings under the \"Environmental Values\" h2 in order"
+    ],
+    "expected_result": "The h2 \"Environmental Values\" is followed by exactly these 5 h3 subsections in this order (note \"No Acid, No Sand\" is a single subsection). Only headings and order are asserted, not full copy.",
+    "linked_requirement": "None"
+  },
+  {
+    "id": "TC-ABOUT-ENV-002",
+    "title": "HPD document link opens the PDF",
+    "type": "UI",
+    "feature": "about",
+    "flow": "environmental-values",
+    "priority": "Medium",
+    "tags": [
+      "smoke"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Expected href: /wp-content/uploads/HPD_v2.3_SkylineDesign.pdf",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Scroll slowly from top to bottom so every section is revealed (some sections are hidden until scrolled into view)",
+      "Click the HPD link in the Testing Data subsection"
+    ],
+    "expected_result": "The PDF opens (HTTP 200, content type application/pdf) and is not an empty file or a 404 page.",
+    "linked_requirement": "None"
+  },
+  {
+    "id": "TC-ABOUT-ENV-003",
+    "title": "In-text links have the expected hrefs",
+    "type": "UI",
+    "feature": "about",
+    "flow": "environmental-values",
+    "priority": "Low",
+    "tags": [
+      "smoke"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Resources=/resources/; Vitracolor=/vitracolor/; Eco-etch=/techniques/; Sustainability=/sustainability/",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Scroll slowly from top to bottom so every section is revealed (some sections are hidden until scrolled into view)",
+      "Read the href of the Resources, Vitracolor, Eco-etch and Sustainability links in the section"
+    ],
+    "expected_result": "Each link href points to the path listed in Test Data.",
+    "linked_requirement": "None"
+  },
+  {
+    "id": "TC-ABOUT-ENV-004",
+    "title": "In-text links resolve without errors",
+    "type": "UI",
+    "feature": "about",
+    "flow": "environmental-values",
+    "priority": "Low",
+    "tags": [
+      "negative"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Links: Resources, Vitracolor, Eco-etch, Sustainability",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Scroll slowly from top to bottom so every section is revealed (some sections are hidden until scrolled into view)",
+      "Open each in-text link of the section one after another (request or click and go back)"
+    ],
+    "expected_result": "Every target responds with a success status and renders a page (no 404/500). Content of the target pages is not asserted.",
+    "linked_requirement": "None"
+  },
+  {
+    "id": "TC-ABOUT-ENV-005",
+    "title": "Section image loads",
+    "type": "UI",
+    "feature": "about",
+    "flow": "environmental-values",
+    "priority": "Low",
+    "tags": [
+      "negative"
+    ],
+    "preconditions": [
+      "Anonymous user (not logged in)",
+      "Desktop viewport 1536x864",
+      "Environment: dev (base URL from PROJECT_CONFIG.json)"
+    ],
+    "test_data": "Image: picture in the Environmental Values section",
+    "steps": [
+      "Open /about/ on the dev environment and wait for the page to finish loading (about 3 seconds, so hero animation completes)",
+      "Scroll slowly from top to bottom so every section is revealed (some sections are hidden until scrolled into view)",
+      "Check the section image (complete = true, naturalWidth > 0)"
+    ],
+    "expected_result": "The image is displayed with real dimensions; no broken-image icon.",
+    "linked_requirement": "None"
+  }
+]
